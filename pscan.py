@@ -1,24 +1,26 @@
-import socket
+import nmap
 
-ip = input("Digite o host ou ip a ser Verificado: ")
+scanner = nmap.PortScanner()
 
-ports = []
-count = 0
+print("Seja bem vindo ao Scanner")
+print("<----------------------->")
 
-while count <10:
-    ports.append(int(input("Digite a porta a ser Verificada: ")))
-    count += 1
+ip = input("Digite o ip a ser varriado: ")
+print("o ip digitado foi: ", ip)
+type(ip)
 
+menu = input(""""\n Escolha o tipo varredura a ser Realizada
+                1 -> Varredura do Tipo SYN
+                2 -> Varredura do Tipo UDP
+                3 -> Varredura do Tipo Intensa
+                Digite a opção escolhida: """)
+print("A opção escolhida foi", menu)
 
-for port in ports:
-    client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    client.settimeout(1)
-    code = client.connect_ex((ip, port))
-
-
-    if code == 0:
-        print(str(port),"-> Porta Aberta")
-    else:
-        print(str(port),"-> Porta Fechada")
-        
-print("Scan Finalizado")
+if menu == "1":
+    print("Versão do Nmap:", scanner.nmap_version())
+    scanner.scan(ip, "1-1024", '-v -sS')
+    print(scanner.scaninfo())
+    print("Status do Ip: ", scanner[ip].state())
+    print(scanner[ip].all_protocols())
+    print("")
+    print("Porta Abertas: ", scanner[ip]['tcp'].keys())
