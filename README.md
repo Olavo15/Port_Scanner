@@ -13,17 +13,17 @@ Este é um simples script em Python que utiliza a biblioteca Nmap para realizar 
 
 3. Clone este repositório para sua máquina local:
     ```bash
-    git clone https://github.com/seu-usuario/scanner-de-portas.git
+    git clone https://github.com/Olavo15/Port_Scanner.git
     ```
 
 4. Navegue até o diretório do projeto:
     ```bash
-    cd scanner-de-portas
+    cd Port_Scanner
     ```
 
 5. Execute o script Python usando o seguinte comando:
     ```bash
-    python scanner.py
+    python pscan.py
     ```
 
 6. Siga as instruções exibidas no console para inserir o IP que deseja varrer e escolher o tipo de varredura (SYN, UDP ou Intensa).
