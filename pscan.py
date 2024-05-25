@@ -24,3 +24,20 @@ if menu == "1":
     print(scanner[ip].all_protocols())
     print("")
     print("Porta Abertas: ", scanner[ip]['tcp'].keys())
+elif menu == "2":
+    print("Versão do Nmap:", scanner.nmap_version())
+    scanner.scan(ip, "1-1024", '-v -sU')
+    print(scanner.scaninfo())
+    print("Status do Ip: ", scanner[ip].state())
+    print(scanner[ip].all_protocols())
+    print("")
+    print("Portas Abertas: ", scanner[ip]["udp"].keys())
+elif menu == "3":
+    print("Versão do Nmap", scanner.nmap_version())
+    scanner.scan(ip, '1-1024', '-v -sC')
+    print("Status do Ip: ", scanner[ip].state())
+    print(scanner[ip].all_protocols())
+    print("")
+    print("Portas Abertas: ", scanner[ip]['tcp'].keys())
+else:
+    print("Escolha uma opção corretar!!!")
